@@ -1,0 +1,46 @@
+{
+    "title": "ใบเสร็จรับเงิน / ใบกำกับภาษี",
+    "title_tax_invoice": "ใบเสร็จรับเงิน / ใบกำกับภาษี",
+    "invoice_type": "Unknown",
+    "seller": "โรงแรมเดอะบ๊อกซ์",
+    "seller_address": {
+        "number": "999/123",
+        "street": "สุขุมวัฒน์ 71",
+        "subdistrict": "พระโขนงเหนือ",
+        "district": "วัฒนา",
+        "province": "กรุงเทพมหานคร",
+        "postal_code": "10110"
+    },
+    "province_seller": "กรุงเทพมหานคร",
+    "buyer": null,
+    "buyer_address": null,
+    "tax_id_buyer": null,
+    "tax_id_seller": "0123456789123",
+    "date": {
+        "day": "22",
+        "month": "05",
+        "year": "2023"
+    },
+    "invoice_no": "RE2023050003",
+    "items": [
+        {
+            "name": "คำห้อง",
+            "quantity": "1",
+            "unit_price": "750.00",
+            "total_price": "750.00"
+        }
+    ],
+    "vat": "49.07",
+    "total": "750.00",
+    "amount_text": null,
+    "warranty_period": null,
+    "issuer_brand": null,
+    "user_year": null,
+    "employee_name": null,
+    "ssf_deduction_amount": null,
+    "rmf_deduction_amount": null,
+    "category": "สิทธิลดหย่อนส่วนตัวและครอบครัว",
+    "sub_category": "เบี้ยประกันสุขภาพบิดามารดา",
+    "deduction_status": "ไม่สามารถลดหย่อนได้",
+    "reason": "ไม่สามารถลดหย่อนได้ เพราะ: ชื่อผู้ซื้อไม่ตรงกับชื่อผู้ใช้"
+}

@@ -1,0 +1,46 @@
+{
+    "title": "หนังสือรับรองการหักลดหย่อนค่าอุปการะเลี้ยงดูบิดามารดา ตามประกาศอธิบดีกรมสรรพากรเกี่ยวกับภาษีเงินได้ (ฉบับที่ 136)",
+    "title_tax_invoice": null,
+    "invoice_type": "Unknown",
+    "seller": null,
+    "seller_address": {
+        "number": null,
+        "street": null,
+        "subdistrict": null,
+        "district": null,
+        "province": null,
+        "postal_code": null
+    },
+    "province_seller": null,
+    "buyer": "สามี แหวนทอง",
+    "buyer_address": {
+        "number": null,
+        "street": null,
+        "subdistrict": null,
+        "district": null,
+        "province": null,
+        "postal_code": null
+    },
+    "tax_id_buyer": null,
+    "tax_id_seller": null,
+    "date": {
+        "day": null,
+        "month": null,
+        "year": null
+    },
+    "invoice_no": null,
+    "items": [],
+    "vat": null,
+    "total": null,
+    "amount_text": null,
+    "warranty_period": null,
+    "issuer_brand": null,
+    "user_year": null,
+    "employee_name": null,
+    "ssf_deduction_amount": null,
+    "rmf_deduction_amount": null,
+    "category": "สิทธิลดหย่อนส่วนตัวและครอบครัว",
+    "sub_category": "อุปการะเลี้ยงดูบิดามารดา",
+    "deduction_status": "ไม่สามารถลดหย่อนได้",
+    "reason": "ไม่สามารถลดหย่อนได้ เพราะ: ชื่อผู้ซื้อไม่ตรงกับชื่อผู้ใช้"
+}

@@ -1,0 +1,11 @@
+opencv-python
+PyPDF2
+pdf2image
+python-dotenv
+openai
+typoon-ocr
+pythainlp
+joblib
+numpy
+selenium
+rapidfuzz

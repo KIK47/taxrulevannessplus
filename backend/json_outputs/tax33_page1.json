@@ -1,0 +1,53 @@
+{
+    "title": "<ชื่อบริษัทของคุณ> (สำนักงานใหญ่)",
+    "title_tax_invoice": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+    "invoice_type": "Unknown",
+    "seller": "<ชื่อบริษัทของคุณ>",
+    "seller_address": {
+        "number": "999",
+        "street": "ถ.สาทร 999",
+        "subdistrict": "แขวงสีลม",
+        "district": "เขตบางรัก",
+        "province": "กรุงเทพมหานคร",
+        "postal_code": "10500"
+    },
+    "province_seller": "กรุงเทพมหานคร",
+    "buyer": "<ชื่อลูกค้า> สำนักงานใหญ่",
+    "buyer_address": {
+        "number": "<ที่อยู่ลูกค้าของคุณ>",
+        "street": null,
+        "subdistrict": null,
+        "district": null,
+        "province": null,
+        "postal_code": "10500"
+    },
+    "tax_id_buyer": "1234567890123",
+    "tax_id_seller": "1234567890999",
+    "date": {
+        "day": "12",
+        "month": "02",
+        "year": "2568"
+    },
+    "invoice_no": "TIV202502120001",
+    "items": [
+        {
+            "name": "ห้องพัก (เตียงเดียวเล็ก)",
+            "quantity": "1",
+            "unit_price": "600.00",
+            "total_price": "600.00"
+        }
+    ],
+    "vat": null,
+    "total": null,
+    "amount_text": null,
+    "warranty_period": null,
+    "issuer_brand": null,
+    "user_year": null,
+    "employee_name": null,
+    "ssf_deduction_amount": null,
+    "rmf_deduction_amount": null,
+    "category": "สิทธิลดหย่อนส่วนตัวและครอบครัว",
+    "sub_category": "บุตร",
+    "deduction_status": "ไม่สามารถลดหย่อนได้",
+    "reason": "ไม่สามารถลดหย่อนได้ เพราะ: ชื่อผู้ซื้อไม่ตรงกับชื่อผู้ใช้"
+}

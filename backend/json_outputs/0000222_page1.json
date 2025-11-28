@@ -1,0 +1,32 @@
+{
+    "title": "ใบรับเงินบริจาค",
+    "title_tax_invoice": null,
+    "invoice_type": "Unknown",
+    "seller": "วัดหนองแก",
+    "seller_address": null,
+    "province_seller": "สอยดาว",
+    "buyer": "นางสาวทดสอบระบบ",
+    "buyer_address": null,
+    "tax_id_buyer": "36599XXXXXXX",
+    "tax_id_seller": null,
+    "date": {
+        "day": "16",
+        "month": "พฤศจิกายน",
+        "year": "2560"
+    },
+    "invoice_no": "0994001291195 2560 9",
+    "items": [],
+    "vat": null,
+    "total": "1,500.00",
+    "amount_text": "หนึ่งพันห้าร้อยบาทถ้วน",
+    "warranty_period": null,
+    "issuer_brand": null,
+    "user_year": null,
+    "employee_name": null,
+    "ssf_deduction_amount": null,
+    "rmf_deduction_amount": null,
+    "category": "เงินบริจาค",
+    "sub_category": "เงินบริจาคทั่วไป",
+    "deduction_status": "ไม่สามารถลดหย่อนได้",
+    "reason": "ไม่สามารถลดหย่อนได้ เพราะ: ชื่อผู้ซื้อไม่ตรงกับชื่อผู้ใช้"
+}

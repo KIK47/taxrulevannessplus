@@ -1,0 +1,46 @@
+{
+    "title": "หนังสือรับรองดอกเบี้ยเงินกู้ยืม ตามประกาศอธิบดีกรมสรรพากร เกี่ยวกับภาษีเงินได้ (ฉบับที่ 165) (ฉบับที่ 166) และ (ฉบับที่ 167)",
+    "title_tax_invoice": null,
+    "invoice_type": "Unknown",
+    "seller": null,
+    "seller_address": {
+        "number": null,
+        "street": null,
+        "subdistrict": null,
+        "district": null,
+        "province": null,
+        "postal_code": null
+    },
+    "province_seller": null,
+    "buyer": null,
+    "buyer_address": {
+        "number": null,
+        "street": null,
+        "subdistrict": null,
+        "district": null,
+        "province": null,
+        "postal_code": null
+    },
+    "tax_id_buyer": null,
+    "tax_id_seller": null,
+    "date": {
+        "day": null,
+        "month": null,
+        "year": null
+    },
+    "invoice_no": null,
+    "items": [],
+    "vat": null,
+    "total": null,
+    "amount_text": null,
+    "warranty_period": null,
+    "issuer_brand": null,
+    "user_year": null,
+    "employee_name": null,
+    "ssf_deduction_amount": null,
+    "rmf_deduction_amount": null,
+    "category": "เงินบริจาค",
+    "sub_category": "เงินบริจาคสนับสนุนการศึกษา/สถานพยาบาล/สภากาชาดไทย/อื่นๆ",
+    "deduction_status": "ไม่สามารถลดหย่อนได้",
+    "reason": "ไม่สามารถลดหย่อนได้ เพราะ: ชื่อผู้ซื้อไม่ตรงกับชื่อผู้ใช้"
+}
