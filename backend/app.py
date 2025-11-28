@@ -5,6 +5,9 @@ from database import save_upload_history
 
 # import workflow modules
 # แก้ไขบล็อก import ใน app.py
+app = Flask(__name__, static_folder="../frontend", static_url_path="")
+CORS(app)
+
 try:
     from prepro import FileHandler
     from ocr_flow import OCRService, TransactionExtractor
