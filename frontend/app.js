@@ -1,6 +1,8 @@
 // ==========================================
 // ส่วนที่ 1: การตั้งค่า (CONFIG) - ห้ามลบ
 // ==========================================
+
+const API_BASE = "https://taxrulevannessplus.onrender.com";
 const subCategoriesByMain = {
     personal: [
         { value: "อุปการะเลี้ยงดูบิดามารดา", label: "อุปการะเลี้ยงดูบิดามารดา" },
@@ -374,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 6. ส่งไป Python
         try {
-            const res = await fetch("/api/check", {
+            const res = await fetch(`${API_BASE}/api/check`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
