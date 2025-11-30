@@ -1,0 +1,53 @@
+{
+    "title": "บริษัท อีเท็กซ์ อินคอเปอร์เรชั่น จำกัด",
+    "title_tax_invoice": "ใบกำกับภาษี",
+    "invoice_type": "Unknown",
+    "seller": "บริษัท อีเท็กซ์ อินคอเปอร์เรชั่น จำกัด",
+    "seller_address": {
+        "number": "1872",
+        "street": "ถนนเหรียญทอง",
+        "subdistrict": "แขวงทรัพย์เขตสิน",
+        "district": "เขตสิน",
+        "province": "กรุงเทพมหานคร",
+        "postal_code": "10118"
+    },
+    "province_seller": "กรุงเทพมหานคร",
+    "buyer": "นายกรนพ ศรีสวัสดิ์",
+    "buyer_address": {
+        "number": "123",
+        "street": "ถนนบางแสน",
+        "subdistrict": "แขวงบางเสน",
+        "district": "เขตบ่อน้ำ",
+        "province": "กรุงเทพมหานคร",
+        "postal_code": "10230"
+    },
+    "tax_id_buyer": "1092300098712",
+    "tax_id_seller": "0123456587698",
+    "date": {
+        "day": "16",
+        "month": "11",
+        "year": "2563"
+    },
+    "invoice_no": "003",
+    "items": [
+        {
+            "name": "ช็อคโกแลตเหรียญทอง",
+            "quantity": "1",
+            "unit_price": "934.58",
+            "total_price": "934.58"
+        }
+    ],
+    "vat": "65.42",
+    "total": "1000",
+    "amount_text": null,
+    "warranty_period": null,
+    "issuer_brand": "iTAX",
+    "user_year": null,
+    "employee_name": null,
+    "ssf_deduction_amount": null,
+    "rmf_deduction_amount": null,
+    "category": "สิทธิลดหย่อนส่วนตัวและครอบครัว",
+    "sub_category": "เบี้ยประกันสุขภาพบิดามารดา",
+    "deduction_status": "ไม่สามารถลดหย่อนได้",
+    "reason": "ไม่สามารถลดหย่อนได้ เพราะ: ชื่อผู้ซื้อไม่ตรงกับชื่อผู้ใช้"
+}
