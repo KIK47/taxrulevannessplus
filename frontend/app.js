@@ -1,6 +1,7 @@
 // ==========================================
 // ส่วนที่ 1: การตั้งค่า (CONFIG) - ห้ามลบ
 // ==========================================
+const API_BASE = "https://taxproject-vaum.onrender.com";
 const subCategoriesByMain = {
     personal: [
         { value: "อุปการะเลี้ยงดูบิดามารดา", label: "อุปการะเลี้ยงดูบิดามารดา" },
@@ -58,8 +59,8 @@ const fieldConfig = {
     "ค่าซ่อมบ้านจากอุทกภัย": ["doc_date", "total"],
     "ค่าซ่อมรถจากอุทกภัย": ["doc_date", "total"],
     "เงินที่บริจาคแก่พรรคการเมือง": ["doc_date", "total"],
-    "ค่าท่องเที่ยวภายในประเทศ": ["doc_date", "total", "invoice_no", "tax_id_seller", "forbidden_item_type","tax_id_buyer","issuer_brand","seller"],
-    "Easy E-Receipt": ["doc_date", "total", "invoice_no", "tax_id_seller", "forbidden_item_type","tax_id_buyer","issuer_brand","seller"],
+    "ค่าท่องเที่ยวภายในประเทศ": ["doc_date", "total", "invoice_no", "tax_id_seller", "forbidden_item_type","tax_id_buyer","seller"],
+    "Easy E-Receipt": ["doc_date", "total", "invoice_no", "tax_id_seller", "forbidden_item_type","tax_id_buyer","seller"],
     "เงินบริจาคสนับสนุนการศึกษา/สถานพยาบาล/สภากาชาดไทย/อื่นๆ": ["doc_date", "total", "net_income"],
     "เงินบริจาค": ["doc_date", "total", "net_income"]
 };
@@ -298,19 +299,141 @@ if (resetBtn) {
 // ==========================================
 // ส่วนที่ 3: Logic ส่งค่า (SEND DATA) 
 // ==========================================
+// document.addEventListener('DOMContentLoaded', () => {
+//     // อ้างอิงปุ่มบันทึกและฟอร์ม
+//     const saveBtn = document.getElementById("btn-save");
+//     const form = document.getElementById("tax-form");
+//     const summaryBox = document.getElementById("summary-box");
+
+//     // ถ้าไม่มีปุ่มนี้ในหน้านั้น ให้จบการทำงาน
+//     if (!saveBtn) return;
+
+//     saveBtn.addEventListener("click", async (e) => {
+//         e.preventDefault(); // ห้าม Refresh
+
+//         // 1. ดึงหมวดหมู่ (ดึงแยกจาก form เพราะบางที select disabled แล้วค่าไม่ส่ง)
+//         const mainCatValue = mainSelect.value;
+//         const subCatValue = subSelect.value;
+//         const subCatLabel = subSelect.options[subSelect.selectedIndex]?.text || "";
+
+//         if (!subCatValue) {
+//             alert("กรุณาเลือกหมวดหมู่ให้ครบถ้วน");
+//             return;
+//         }
+
+//         // 2. ดึงข้อมูลจาก Form
+//         const fd = new FormData(form);
+
+//         // 3. แปลงวันที่ (YYYY-MM-DD -> Object)
+//         const rawDate = fd.get("doc_date");
+//         let dateObj = {};
+//         if (rawDate) {
+//             const parts = rawDate.split("-");
+//             if (parts.length === 3) {
+//                 dateObj = {
+//                     year: parseInt(parts[0]),
+//                     month: parseInt(parts[1]),
+//                     day: parseInt(parts[2])
+//                 };
+//             }
+//         }
+
+//         // 4. แปลง Items (Dropdown -> Array)
+//         const itemType = fd.get("forbidden_item_type");
+//         let itemsArray = [];
+//         itemsArray.push({
+//             // ถ้าเลือกของต้องห้าม ให้ส่งชื่อนั้น ถ้าไม่เลือก ให้ส่งชื่อหมวด
+//             name: (itemType && itemType !== "none") ? itemType : subCatLabel,
+//             total_price: parseFloat(fd.get("total") || 0)
+//         });
+
+//         // 5. รวมร่างข้อมูล (Payload)
+//         const payload = {
+//             buyer: fd.get("user_name") || "",
+//             main_category: mainCatValue,
+//             sub_category: subCatLabel, // Python ใช้ตัวนี้เช็ค
+            
+//             date: dateObj,
+//             total: parseFloat(fd.get("total") || 0),
+//             net_income: parseFloat(fd.get("net_income") || 0),
+//             warranty_period: parseInt(fd.get("warranty_period") || 0),
+            
+//             ssf_total: parseFloat(fd.get("ssf_total") || 0),
+//             rmf_total: parseFloat(fd.get("rmf_total") || 0),
+            
+//             invoice_no: fd.get("invoice_no") || "",
+//             tax_id_seller: fd.get("tax_id_seller") || "",
+//             career: fd.get("career") || "employee",
+//             tax_id_buyer: fd.get("tax_id_buyer") || "",
+//             issuer_brand: fd.get("issuer_brand") || "",
+//             seller: fd.get("seller_manual") || "",
+            
+//             items: itemsArray, 
+//         };
+
+//         console.log("Sending:", payload);
+
+//         // 6. ส่งไป Python
+//         try {
+//             // const res = await fetch("/api/check", {
+//             const res = await fetch(`${API_BASE}/api/check`, {
+//                 method: "POST",
+//                 headers: { "Content-Type": "application/json" },
+//                 body: JSON.stringify(payload)
+//             });
+
+//             const data = await res.json();
+
+//             if (data.ok) {
+//                 const r = data.result;
+
+//                 // 1. เช็คสถานะว่าเป็น "ไม่สามารถลดหย่อนได้" หรือไม่
+//                 const isError = r.deduction_status === "ไม่สามารถลดหย่อนได้";
+
+//                 // 2. กำหนดสีตามสถานะ (Ternary Operator)
+//                 // ถ้าไม่ผ่าน (isError) ให้ใช้สีแดง, ถ้าผ่าน ให้ใช้สีเขียวเดิม
+//                 const styles = {
+//                     bg: isError ? "#fef2f2" : "#f0fdf4",        // พื้นหลัง (แดงอ่อน / เขียวอ่อน)
+//                     border: isError ? "#fecaca" : "#bbf7d0",    // ขอบ (แดง / เขียว)
+//                     text: isError ? "#dc2626" : "#166534"       // ตัวหนังสือหัวข้อ (แดงเข้ม / เขียวเข้ม)
+//                 };
+
+//                 // 3. แสดงผลลัพธ์โดยใช้สีที่กำหนดไว้ข้างบน
+//                 summaryBox.innerHTML = `
+//                     <div style="padding: 15px; border-radius: 8px; background: ${styles.bg}; border: 1px solid ${styles.border};">
+//                         <h3 style="color: ${styles.text}; margin-bottom: 10px;">
+//                             ${r.deduction_status}
+//                         </h3>
+//                         <p><strong>ยอดลดหย่อน:</strong> ${r.final_deduction || "0"} บาท</p>
+//                         <hr style="margin: 10px 0; border-color: ${styles.border};">
+//                         <p style="font-size: 0.9em; color: #555;">
+//                             <strong>รายละเอียด/เหตุผล:</strong> ${r.reason || r.final_deduction_rule || "-"}
+//                         </p>
+//                     </div>
+//                 `;
+//             } else {
+//                 alert("เกิดข้อผิดพลาด: " + (data.error || "Unknown Error"));
+//             }
+
+//         } catch (err) {
+//             console.error(err);
+//             alert("เชื่อมต่อ Server ไม่ได้! (เช็คว่าเปิด app.py หรือยัง)");
+//         }
+//     });
+// });
 document.addEventListener('DOMContentLoaded', () => {
-    // อ้างอิงปุ่มบันทึกและฟอร์ม
     const saveBtn = document.getElementById("btn-save");
     const form = document.getElementById("tax-form");
     const summaryBox = document.getElementById("summary-box");
 
-    // ถ้าไม่มีปุ่มนี้ในหน้านั้น ให้จบการทำงาน
-    if (!saveBtn) return;
+    if (!saveBtn || !form || !summaryBox) {
+        console.warn("ไม่เจอ element ที่ต้องใช้ (btn-save / tax-form / summary-box)");
+        return;
+    }
 
     saveBtn.addEventListener("click", async (e) => {
-        e.preventDefault(); // ห้าม Refresh
+        e.preventDefault(); // ห้าม refresh หน้า
 
-        // 1. ดึงหมวดหมู่ (ดึงแยกจาก form เพราะบางที select disabled แล้วค่าไม่ส่ง)
         const mainCatValue = mainSelect.value;
         const subCatValue = subSelect.value;
         const subCatLabel = subSelect.options[subSelect.selectedIndex]?.text || "";
@@ -320,10 +443,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 2. ดึงข้อมูลจาก Form
         const fd = new FormData(form);
 
-        // 3. แปลงวันที่ (YYYY-MM-DD -> Object)
+        // แปลงวันที่
         const rawDate = fd.get("doc_date");
         let dateObj = {};
         if (rawDate) {
@@ -337,72 +459,79 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 4. แปลง Items (Dropdown -> Array)
+        // items
         const itemType = fd.get("forbidden_item_type");
-        let itemsArray = [];
-        itemsArray.push({
-            // ถ้าเลือกของต้องห้าม ให้ส่งชื่อนั้น ถ้าไม่เลือก ให้ส่งชื่อหมวด
+        const itemsArray = [{
             name: (itemType && itemType !== "none") ? itemType : subCatLabel,
             total_price: parseFloat(fd.get("total") || 0)
-        });
+        }];
 
-        // 5. รวมร่างข้อมูล (Payload)
         const payload = {
             buyer: fd.get("user_name") || "",
             main_category: mainCatValue,
-            sub_category: subCatLabel, // Python ใช้ตัวนี้เช็ค
-            
+            sub_category: subCatLabel,
+
             date: dateObj,
             total: parseFloat(fd.get("total") || 0),
             net_income: parseFloat(fd.get("net_income") || 0),
             warranty_period: parseInt(fd.get("warranty_period") || 0),
-            
+
             ssf_total: parseFloat(fd.get("ssf_total") || 0),
             rmf_total: parseFloat(fd.get("rmf_total") || 0),
-            
+
             invoice_no: fd.get("invoice_no") || "",
             tax_id_seller: fd.get("tax_id_seller") || "",
             career: fd.get("career") || "employee",
             tax_id_buyer: fd.get("tax_id_buyer") || "",
             issuer_brand: fd.get("issuer_brand") || "",
             seller: fd.get("seller_manual") || "",
-            
-            items: itemsArray, 
+
+            items: itemsArray,
         };
 
-        console.log("Sending:", payload);
+        console.log(">>> ส่ง payload ไป check:", payload);
 
-        // 6. ส่งไป Python
         try {
-            const res = await fetch("/api/check", {
+            const res = await fetch(`${API_BASE}/api/check`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
 
-            const data = await res.json();
+            console.log(">>> res status:", res.status, res.statusText);
+
+            if (!res.ok) {
+                alert("เซิร์ฟเวอร์ตอบกลับผิดปกติ (HTTP " + res.status + ")");
+                return;
+            }
+
+            let data;
+            try {
+                data = await res.json();
+            } catch (err) {
+                console.error("parse JSON fail:", err);
+                alert("รูปแบบข้อมูลตอบกลับไม่ถูกต้อง (parse JSON ไม่ได้)");
+                return;
+            }
+
+            console.log(">>> data จาก backend:", data);
 
             if (data.ok) {
-                const r = data.result;
+                const r = data.result || {};
 
-                // 1. เช็คสถานะว่าเป็น "ไม่สามารถลดหย่อนได้" หรือไม่
                 const isError = r.deduction_status === "ไม่สามารถลดหย่อนได้";
-
-                // 2. กำหนดสีตามสถานะ (Ternary Operator)
-                // ถ้าไม่ผ่าน (isError) ให้ใช้สีแดง, ถ้าผ่าน ให้ใช้สีเขียวเดิม
                 const styles = {
-                    bg: isError ? "#fef2f2" : "#f0fdf4",        // พื้นหลัง (แดงอ่อน / เขียวอ่อน)
-                    border: isError ? "#fecaca" : "#bbf7d0",    // ขอบ (แดง / เขียว)
-                    text: isError ? "#dc2626" : "#166534"       // ตัวหนังสือหัวข้อ (แดงเข้ม / เขียวเข้ม)
+                    bg: isError ? "#fef2f2" : "#f0fdf4",
+                    border: isError ? "#fecaca" : "#bbf7d0",
+                    text: isError ? "#dc2626" : "#166534"
                 };
 
-                // 3. แสดงผลลัพธ์โดยใช้สีที่กำหนดไว้ข้างบน
                 summaryBox.innerHTML = `
                     <div style="padding: 15px; border-radius: 8px; background: ${styles.bg}; border: 1px solid ${styles.border};">
                         <h3 style="color: ${styles.text}; margin-bottom: 10px;">
-                            ${r.deduction_status}
+                            ${r.deduction_status || "—"}
                         </h3>
-                        <p><strong>ยอดลดหย่อน:</strong> ${r.final_deduction || "0"} บาท</p>
+                        <p><strong>ยอดลดหย่อน:</strong> ${r.final_deduction ?? "0"} บาท</p>
                         <hr style="margin: 10px 0; border-color: ${styles.border};">
                         <p style="font-size: 0.9em; color: #555;">
                             <strong>รายละเอียด/เหตุผล:</strong> ${r.reason || r.final_deduction_rule || "-"}
@@ -414,8 +543,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         } catch (err) {
-            console.error(err);
-            alert("เชื่อมต่อ Server ไม่ได้! (เช็คว่าเปิด app.py หรือยัง)");
+            console.error("fetch error:", err);
+            alert("เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ (backend ล่มหรือเน็ตมีปัญหา)");
         }
     });
 });

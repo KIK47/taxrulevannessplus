@@ -46,8 +46,8 @@
     "employee_name": null,
     "ssf_deduction_amount": null,
     "rmf_deduction_amount": null,
-    "category": "สิทธิลดหย่อนส่วนตัวและครอบครัว",
-    "sub_category": "บุตร",
+    "category": "สินทรัพย์และมาตรการนโยบายภาครัฐ",
+    "sub_category": "ค่าท่องเที่ยวภายในประเทศ",
     "deduction_status": "ไม่สามารถลดหย่อนได้",
     "reason": "ไม่สามารถลดหย่อนได้ เพราะ: ชื่อผู้ซื้อไม่ตรงกับชื่อผู้ใช้"
 }

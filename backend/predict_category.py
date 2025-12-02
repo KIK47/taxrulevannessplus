@@ -187,6 +187,7 @@ class prediction:
         title = data.get("title", "")
         title = str(title)
         items = data.get("items") or []
+        tax_inv_title = data.get("title_tax_invoice", "")
 
         if "ภัย" in title:
             title = title.replace("ภัย", "ชีวิต")
@@ -209,6 +210,13 @@ class prediction:
         print(f"[R1] txt={raw!r}")
         print(f"[R1] cleaned={cleaned!r}")
         print(f"[R1] cat={cat} | sub={sub}")
+
+        
+        #-----Rule------Easy E-Receipt------------------
+        # if any(k in tax_inv_title for k in ["ใบกำกับภาษี", "ใบกำกับภาษีอย่างย่อ", "ใบกำกับภาษีแบบเต็ม", "ใบเสร็จรับเงิน"]) and items:
+        #     # ต้องอัปเดตตัวแปร cat เป็น "Easy E-Receipt" เพื่อให้ Logic ถัดๆ ไป (เช่นการหา sub ของ Easy) ทำงานถูกต้อง
+        #     cat = "Easy E-Receipt"
+        #     print("[RULE] พบใบกำกับภาษี/ใบเสร็จ -> ปรับ category เป็น Easy E-Receipt")
 
         # --- RULE: override กลุ่มย่อยเมื่อเป็น ใบกำกับภาษี/ใบเสร็จ ---
         if (
@@ -281,10 +289,6 @@ class prediction:
                 sub = "ค่าซื้อหน่วยลงทุนในกองทุนรวมเพื่อการออม SSF"
                 print("[RULE] บังคับเป็น SSF จาก title ที่มีคำว่า กองทุนรวม(เพื่อการออม)")
         
-        cat = self._predict_category(cleaned)
-        sub = self._predict_sub(cat, cleaned)
-        title_text = (title or "").lower()
-        title_tax = (data.get("title_tax_invoice") or "").lower()
         
         # ========================================================
         # ✅ แก้ไข Logic ดักจับ "การเมือง" และ "บริจาค"

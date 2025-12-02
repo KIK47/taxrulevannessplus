@@ -3,10 +3,24 @@
     "title_tax_invoice": null,
     "invoice_type": "Unknown",
     "seller": "วัดหนองแก",
-    "seller_address": null,
-    "province_seller": "สอยดาว",
+    "seller_address": {
+        "number": null,
+        "street": null,
+        "subdistrict": null,
+        "district": "สอยดาว",
+        "province": null,
+        "postal_code": null
+    },
+    "province_seller": null,
     "buyer": "นางสาวทดสอบระบบ",
-    "buyer_address": null,
+    "buyer_address": {
+        "number": null,
+        "street": null,
+        "subdistrict": null,
+        "district": null,
+        "province": null,
+        "postal_code": null
+    },
     "tax_id_buyer": "36599XXXXXXX",
     "tax_id_seller": null,
     "date": {

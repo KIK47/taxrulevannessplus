@@ -580,7 +580,6 @@ class check_condition:
                 # 2) เช็คฟิลด์ที่ต้องมี
                 seller = (data.get("seller") or "").strip()
                 seller_tax = (data.get("tax_id_seller") or "").strip()
-                issuer_brand = (data.get("issuer_brand") or "").strip()
                 invoice_no = (data.get("invoice_no") or "").strip()
                 buyer_name = (data.get("buyer") or "").strip()
                 buyer_tax = (data.get("tax_id_buyer") or "").strip()
@@ -594,8 +593,6 @@ class check_condition:
 
                 if not seller:
                     missing.append("ชื่อผู้ขาย (seller)")
-                if not issuer_brand:
-                    missing.append("issuer_brand (ชื่อส่วนหัวกระดาษ/แบรนด์)")
                 if not invoice_no:
                     missing.append("เลขที่ใบกำกับภาษี (invoice_no)")
                 if not buyer_name:
@@ -693,7 +690,6 @@ class check_condition:
 
                 seller = (data.get("seller") or "").strip()
                 seller_tax = (data.get("tax_id_seller") or "").strip()
-                issuer_brand = (data.get("issuer_brand") or "").strip()
                 invoice_no = (data.get("invoice_no") or "").strip()
                 buyer_name = (data.get("buyer") or "").strip()
                 buyer_tax = (data.get("tax_id_buyer") or "").strip()
@@ -704,8 +700,6 @@ class check_condition:
                     missing.append("เลขผู้เสียภาษีผู้ขาย 13 หลัก (tax_id_seller)")
                 if not seller:
                     missing.append("ชื่อผู้ขาย (seller)")
-                if not issuer_brand:
-                    missing.append("issuer_brand (ชื่อส่วนหัวกระดาษ/แบรนด์)")
                 if not invoice_no:
                     missing.append("เลขที่ใบกำกับภาษี (invoice_no)")
                 if not buyer_name:
@@ -766,9 +760,9 @@ class check_condition:
                 else:
                     # กรณีผ่านทั้งหมด
                     if total > 0:
-                        calc_amount = min(total, 20000)
+                        calc_amount = min(total, 50000)
                         final_deduction = calc_amount
-                        final_deduction_rule = "หักลดหย่อนได้ตามที่จ่ายจริง แต่ไม่เกิน 20,000 บาท..."
+                        final_deduction_rule = "ตามจำนวนที่จ่ายจริง รวมกันในหมวดหมู่นี้ไม่เกิน 50,000 บาท"
                     else:
                         final_deduction_rule = "ค่าท่องเที่ยวภายในประเทศ หักลดหย่อนได้ตามที่จ่ายจริง..."
                     

@@ -46,8 +46,10 @@
     "employee_name": null,
     "ssf_deduction_amount": null,
     "rmf_deduction_amount": null,
-    "category": "สิทธิลดหย่อนส่วนตัวและครอบครัว",
-    "sub_category": "เบี้ยประกันสุขภาพบิดามารดา",
+    "category": "Easy E-Receipt",
+    "sub_category": "ค่าซื้อสินค้าหรือค่าบริการในระบบภาษีมูลค่าเพิ่ม",
     "deduction_status": "ไม่สามารถลดหย่อนได้",
-    "reason": "ไม่สามารถลดหย่อนได้ เพราะ: ชื่อผู้ซื้อไม่ตรงกับชื่อผู้ใช้"
+    "reason": "ไม่สามารถลดหย่อนได้ เนื่องจากวันที่จ่ายไม่อยู่ในช่วง...",
+    "final_deduction": 0,
+    "final_deduction_rule": "ไม่สามารถลดหย่อนได้ เนื่องจากวันที่จ่ายไม่อยู่ในช่วง..."
 }

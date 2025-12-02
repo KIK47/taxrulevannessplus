@@ -1,0 +1,54 @@
+{
+    "title": "หนังสือรับรองการชำระเบี้ยประกันชีวิต",
+    "title_tax_invoice": null,
+    "invoice_type": "Unknown",
+    "seller": "บริษัท กรุงไทย-เอกซ่า ประกันชีวิต จำกัด (มหาชน)",
+    "seller_address": {
+        "number": "9",
+        "street": "อาคาร จี ทาวเวอร์ แกรนด์ รามา 9",
+        "subdistrict": "ห้วยขวาง",
+        "district": "ห้วยขวาง",
+        "province": "กรุงเทพมหานคร",
+        "postal_code": "10310"
+    },
+    "province_seller": "กรุงเทพมหานคร",
+    "buyer": "นางวงษ์ปัญญา นวนแก้ว",
+    "buyer_address": {
+        "number": "194/181",
+        "street": "ถ.ศรีจันทร์",
+        "subdistrict": "ในเมือง",
+        "district": "เมือง",
+        "province": null,
+        "postal_code": null
+    },
+    "tax_id_buyer": "3341200023244",
+    "tax_id_seller": "0107555000376",
+    "date": {
+        "day": "2",
+        "month": "มิถุนายน",
+        "year": "2563"
+    },
+    "invoice_no": null,
+    "items": [
+        {
+            "name": null,
+            "quantity": null,
+            "unit_price": null,
+            "total_price": "11,098.50"
+        }
+    ],
+    "vat": null,
+    "total": "11,098.50",
+    "amount_text": null,
+    "warranty_period": "10",
+    "issuer_brand": null,
+    "user_year": null,
+    "employee_name": null,
+    "ssf_deduction_amount": null,
+    "rmf_deduction_amount": null,
+    "category": "การออมการลงทุนและประกัน",
+    "sub_category": "เบี้ยประกันชีวิต",
+    "final_deduction": 11098.5,
+    "final_deduction_rule": "หักเป็นค่าลดหย่อนตามจำนวนที่จ่ายจริงแต่ไม่เกิน 10,000 บาท สำหรับเบี้ยประกันส่วนที่เกิน 10,000 แต่ไม่เกิน 90,000 บาท (มีผลเท่ากับว่าเบี้ยประกันชีวิตให้หักลดหย่อนได้ ตามจำนวนที่จ่ายจริงแต่ไม่เกิน 100,000 บาท)",
+    "deduction_status": "ผ่านเงื่อนไขเบื้องต้น"
+}
