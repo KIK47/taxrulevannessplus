@@ -59,8 +59,8 @@ const fieldConfig = {
     "ค่าซ่อมบ้านจากอุทกภัย": ["doc_date", "total"],
     "ค่าซ่อมรถจากอุทกภัย": ["doc_date", "total"],
     "เงินที่บริจาคแก่พรรคการเมือง": ["doc_date", "total"],
-    "ค่าท่องเที่ยวภายในประเทศ": ["doc_date", "total", "invoice_no", "tax_id_seller", "forbidden_item_type","tax_id_buyer","seller"],
-    "Easy E-Receipt": ["doc_date", "total", "invoice_no", "tax_id_seller", "forbidden_item_type","tax_id_buyer","seller"],
+    "ค่าท่องเที่ยวภายในประเทศ": ["doc_date", "total", "invoice_no", "tax_id_seller","seller", "forbidden_item_type","tax_id_buyer",],
+    "Easy E-Receipt": ["doc_date", "total", "invoice_no", "tax_id_seller","seller","forbidden_item_type","tax_id_buyer"],
     "เงินบริจาคสนับสนุนการศึกษา/สถานพยาบาล/สภากาชาดไทย/อื่นๆ": ["doc_date", "total", "net_income"],
     "เงินบริจาค": ["doc_date", "total", "net_income"]
 };
